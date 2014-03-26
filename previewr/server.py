@@ -7,6 +7,7 @@ import logging
 def serve(directory, port=8000):
     os.chdir(directory)
     httpd = HTTPServer(('', port), SpecificHTTPRequestHandler)
+    logging.info("Running at localhost:%s" % port)
     httpd.serve_forever()
 
 

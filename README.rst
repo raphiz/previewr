@@ -21,9 +21,9 @@ That's basically why I wrote this tool.
 
 Installation
 ============
-Hopefully soon like this:
+Just run:
 
-    easy_install previewr
+    pip previewr
 
 
 Roadmap
