@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title>Preview ${filename}</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="static/jquery.min.js"></script>
+        <link rel="stylesheet" href="static/bootstrap.min.css">
+        <link rel="stylesheet" href="static/bootstrap-theme.min.css">
+        <script src="static/bootstrap.min.js"></script>
+        <script src="static/poller.js"></script>
+
+        <style>
+            .system-message-title{
+                font-weight: bold;
+            }
+        </style>
+
+
+    </head>
+    <body>
+     <div class="container">
+
+      <div class="starter-template">
+        ${contents}
+      </div>
+
+    </div>
+    <script>
+        $(".system-message").
+        addClass('alert').
+        addClass('alert-danger')
+    </script>
+    </body>
+</html>
