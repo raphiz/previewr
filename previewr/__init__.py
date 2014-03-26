@@ -8,7 +8,7 @@ import os
 import shutil
 
 
-def run():
+def main():
 
     (options, args) = parse_cli_parameters()
 
@@ -45,4 +45,4 @@ def parse_cli_parameters():
     return parser.parse_args()
 
 if __name__ == "__main__":
-    run()
+    main()
