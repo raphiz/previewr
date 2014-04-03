@@ -23,7 +23,7 @@ Installation
 ============
 Just run:
 
-    pip previewr
+    pip install previewr
 
 
 Roadmap
