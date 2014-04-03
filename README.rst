@@ -13,7 +13,7 @@ Please note that I just wrote this tool in one Afternoon, therefore many functio
 However, it works so far (on my machine :) ) and I'm open for feedback and pull requests!
 Additionally, Python is not my "native" (primary) programming language. So  if I could improve stuff, please let me know!
 
-Why another toool?
+Why another tool?
 ------------------
 Many tools provide almost the same or even more functionality. However, I don't want to use for each language another tool,
 for example when I write my software in VI, why should I use another editor to preview my markdown/reSt documents?
