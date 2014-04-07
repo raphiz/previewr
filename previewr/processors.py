@@ -1,23 +1,23 @@
 import logging
-import time
 from abc import abstractmethod
-from previewr.utils import  get_resource_path
+
 
 class Processor(object):
+
+    name = "unknown"
+
     """
         A processor is responsible to convert the source file into a html file.
     """
-    def __init__(self, file_to_process, destionation_directory):
+    def __init__(self, file_to_process):
         self.file_to_process = file_to_process
-        self.destination_directory = destionation_directory
-        self.json_template = get_resource_path("templates/template.json")
 
     @abstractmethod
     def process(self):
         """
-        Performs the effective conversion
+        Performs the effective conversion and returns the result
         """
-        pass
+        return ""
 
     @abstractmethod
     def is_applicable(self):
@@ -33,35 +33,6 @@ class Processor(object):
         """
         return self.file_to_process.split(".")[-1]
 
-    def write(self, contents):
-        """
-        Writes the given string contents into a HTML file. This allows templating and automatic refreshing.
-        """
-
-        # Process HTML template
-        replacements = {'filename': self.file_to_process, 'contents': contents}
-        self._process_template(get_resource_path("templates/template.html"), self.destination_directory + '/index.html', replacements)
-
-        # Process last refresh json
-        replacements = {'date': str(time.time())}
-        self._process_template(get_resource_path("templates/template.json"), self.destination_directory + '/last_refresh.json', replacements)
-
-    @staticmethod
-    def _process_template(template_file, output_file, replacements):
-        # Read the template
-        f = open(template_file, 'r')
-        template = f.read()
-        f.close()
-
-        # Replace placeholders
-        for (placeholder, replacement) in replacements.items():
-            template = template.replace('${'+placeholder+'}', replacement)
-
-        # Write to destination file
-        f = open(output_file, 'w')
-        f.write(template)
-        f.close()
-
     def get_contents(self):
         """
         Returns the contents of the source file
@@ -76,11 +47,11 @@ class MarkdownProcessor(Processor):
     """
         Processor specific for the markdown format.
     """
+    name = "markdown"
 
     def process(self):
         import markdown
-        out = markdown.markdown(self.get_contents())
-        self.write(out)
+        return markdown.markdown(self.get_contents())
 
     def is_applicable(self):
         if self.get_file_extension() in ["md", "markdown"]:
@@ -92,32 +63,57 @@ class RstProcessor(Processor):
     """
         Processor specific for the restructuredText format
     """
+
+    name = "rst"
+
     def process(self):
-        try:
-            from docutils import core
-            out = core.publish_parts(self.get_contents(), writer_name="html")["html_body"]
-            self.write(out)
-        except Exception as e:
-            print(e)
-            self.write("Unexpected error:")
+        from docutils import core
+        return core.publish_parts(self.get_contents(), writer_name="html")["html_body"]
 
     def is_applicable(self):
         if self.get_file_extension() in ["rst"]:
             return True
         return False
 
-# A list of all available processors
-processors = [MarkdownProcessor, RstProcessor]
 
-
-def select_applicable_processor(path, dst):
+class Processors:
     """
-    Selects a matching processor for the given file
+    A utility class providing methods to access all processors.
     """
-    for processor_cls in processors:
-        instance = processor_cls(path, dst)
-        if instance.is_applicable():
-            logging.debug("Using processor %s" % processor_cls.__name__)
-            return instance
 
-    raise Exception("No processor found for the given file!")
+    # A list of all available processors
+    processors = [MarkdownProcessor, RstProcessor]
+
+    @classmethod
+    def processor_names(cls):
+        """
+        Returns a list of all available processor names/
+        """
+        values = []
+        for processor in cls.processors:
+            values.append(processor.name)
+        return values
+
+    @classmethod
+    def get_processor_by_name(cls, name):
+        """
+        Returns the processor with the given name (first match, first win).
+        If none is found, None is returned.
+        """
+        for processor in cls.processors:
+            if processor.name == name:
+                return processor
+        return None
+
+    @classmethod
+    def select_applicable_processor(cls, file_to_process):
+        """
+        Selects a matching processor for the given file
+        """
+        for processor_cls in cls.processors:
+            instance = processor_cls(file_to_process)
+            if instance.is_applicable():
+                logging.debug("Using processor %s" % processor_cls.__name__)
+                return processor_cls
+
+        raise Exception("No processor found for the given file!")

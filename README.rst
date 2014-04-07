@@ -27,17 +27,22 @@ Just run:
 
 
 Roadmap
-==================
+=======
+
+v 0.2
+* Reload TOC when the file is updated
+* Fine tune TOC (responsive)
+* Code cleanup
+* implement pictures support
+* Extend documentation (readme only)
+
 
 The following things have to be done next:
 
-* Allow user to select the file processor with a option parameter
 * Provide a plugin mechanism for more processors
 * Improve documentation
 * Write unit tests
-* Use Websockets
-* allow to change the port
-* Bootstrap stuff shall be included using submodules
+* Provide theming mechanism.
 
 Contribute
 ==========
@@ -48,3 +53,8 @@ If anything is unclear or annoying, let me know!
 License
 =======
 Everything is under MIT license!
+
+
+Attribution
+===========
+Icon: https://www.iconfinder.com/icons/7680/adept_magnifying_glass_preview_icon#size=32

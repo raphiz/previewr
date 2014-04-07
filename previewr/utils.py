@@ -24,8 +24,6 @@ class Scheduler(object):
             self._timer = Timer(self.interval, self._run)
             self._timer.start()
 
-
-
     def start(self):
         """
         Starts the scheduled task.
@@ -33,7 +31,6 @@ class Scheduler(object):
         if not self.is_running:
             self.is_running = True
             self._run()
-
 
     def stop(self):
         """
@@ -49,12 +46,12 @@ class FilePoller(object):
     This class is responsible to poll a certain file and call a "processor" if it has changed.
     """
 
-    def __init__(self, path, processor):
+    def __init__(self, path, observer):
         self.path = path
-        self.processor = processor
+        self.observer = observer
         self.modification_timestamp = self._fetch_modification_timestamp()
 
-        self.processor.process()
+        self.observer()
 
     def poll(self):
         """
@@ -65,7 +62,7 @@ class FilePoller(object):
 
         if self.modification_timestamp != date:
             logging.info("File change detected on file '%s'" % self.path)
-            self.processor.process()
+            self.observer()
             self.modification_timestamp = date
 
     def _fetch_modification_timestamp(self):
@@ -73,7 +70,3 @@ class FilePoller(object):
         Fetches the last modification timestamp from the file to poll and returns it.
         """
         return time.ctime(os.path.getmtime(self.path))
-
-
-def get_resource_path(project_relative_path):
-    return os.path.join(os.path.split(__file__)[0], project_relative_path)
