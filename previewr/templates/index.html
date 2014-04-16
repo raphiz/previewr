@@ -14,7 +14,8 @@
         <title>Preview of: {{filename}}</title>
 
         <link rel="stylesheet" href="{{static_url('pure-min.css')}}">
-        <link rel="stylesheet" href="{{static_url('table-of-contents.css')}}">
+        <link rel="stylesheet" href="{{static_url('specific.css')}}">
+        <!--<link rel="stylesheet" href="{{static_url('table-of-contents.css')}}">-->
 
         <script src="{{static_url('jquery.min.js')}}"></script>
         <script src="{{static_url('toc.jquery.min.js')}}"></script>
@@ -23,7 +24,8 @@
     <body>
         <div id="layout">
             <div id="menu">
-                <div id="toc" class="pure-menu pure-menu-open"></div>
+                <span class="title">Contents</span>
+                <div id="toc"></div>
             </div>
             <div id="main">
                 <div class="content">
@@ -34,11 +36,6 @@
         <script>
         // Create Table of contents
         $('#toc').toc();
-
-        // Style errors
-        $(".system-message").
-            addClass('alert').
-            addClass('alert-danger')
         </script>
     </body>
 </html>

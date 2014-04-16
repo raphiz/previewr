@@ -13,6 +13,7 @@ $(document).ready(function() {
 
         showMessage: function(message) {
             $(".content").html(message)
+            $('#toc').toc();
         }
     };
     updater.start();

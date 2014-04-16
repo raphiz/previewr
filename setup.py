@@ -10,7 +10,7 @@ setup(
             "templates/*",
             "static/*"],
     },
-    version = "0.0.2",
+    version = "0.1.0",
     license = "MIT",
     include_package_data=True,
     zip_safe=False,

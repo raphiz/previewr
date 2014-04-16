@@ -1,6 +1,7 @@
 
 from previewr.utils import *
 from previewr.processors import *
+from tornado.web import StaticFileHandler
 
 import logging
 import os.path
@@ -23,8 +24,8 @@ class Application(tornado.web.Application):
         handlers = [
             (r"/", MainHandler),
             (r"/update", UpdateSocketHandler),
+            (r"/(.*)", StaticFileHandler, {"path": os.getcwd()}),
         ]
-
         # Get the file to preview from the CLI parameters...
         args = tornado.options.parse_command_line()
         # Verify the argument is present!
@@ -86,6 +87,14 @@ class MainHandler(tornado.web.RequestHandler):
         self.render("index.html",
                     contents=self.application.processor.process(),
                     filename=self.application.file_to_preview)
+
+
+class MainResourceHandler(tornado.web.RequestHandler):
+    """
+    Main RequestHandler to send the index to the client.
+    """
+    def get(self, a):
+        print(a)
 
 
 class UpdateSocketHandler(tornado.websocket.WebSocketHandler):
