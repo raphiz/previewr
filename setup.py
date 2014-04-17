@@ -1,6 +1,7 @@
 from distutils.core import setup
 
 README = open('README.rst').read()
+VERSION = '0.2.0'
 
 setup(
     name = "previewr",
@@ -10,7 +11,7 @@ setup(
             "templates/*",
             "static/*"],
     },
-    version = "0.2.0",
+    version = VERSION,
     license = "MIT",
     include_package_data=True,
     zip_safe=False,
@@ -23,7 +24,7 @@ setup(
     author = "Raphael Zimmermann",
     author_email = "mister.norbert@gmail.com",
     url = "https://github.com/raphiz/previewr",
-    download_url = "https://github.com/raphiz/previewr/archive/master.zip",
+    download_url = "https://github.com/raphiz/previewr/archive/" + VERSION + ".zip",
     keywords = ["preview", "markdown", "rst", "md", "restructuredText"],
     classifiers = [
         "Programming Language :: Python :: 3",
