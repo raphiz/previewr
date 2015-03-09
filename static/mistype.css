@@ -1,0 +1,218 @@
+/*!
+ * Mistype v1.6.0 (http://git.io/mistype)
+ * Licensed under the MIT License.
+ */
+
+/**
+ * Contents
+ *
+ * Scaffolding
+ * Grid
+ * Utilities
+ * Media queries
+ */
+
+/**
+ * Scaffolding
+ */
+
+/*
+ * Reset `box-sizing`
+ */
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/*
+ * Body properties
+ */
+
+body {
+  padding: 2%;
+  font: 16px/20px sans-serif;
+  color: #666;
+  background-color: #fff;
+}
+
+/*
+ * Horizontal rules
+ */
+
+hr {
+  border: 0;
+  border-top: 1px solid #bbb;
+}
+
+/*
+ * Base margins
+ */
+
+hr,
+h1, h2, h3, h4, h5, h6,
+p,
+ul,
+ol,
+dl,
+pre {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+  margin-bottom: 0;
+}
+
+/**
+ * Grid
+ */
+
+/*
+ * Centered container
+ */
+
+.container {
+  width: 96%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*
+ * Column wrapper
+ */
+
+.row {
+  margin-right: -2%;
+  margin-left: -2%;
+}
+
+/*
+ * Columns
+ */
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10 {
+  position: relative;
+  padding-right: 2%;
+  padding-left: 2%;
+}
+
+/* Responsive column sizing */
+@media (min-width: 992px) {
+  .col-1,
+  .col-2,
+  .col-3,
+  .col-4,
+  .col-5,
+  .col-6,
+  .col-7,
+  .col-8,
+  .col-9
+  .col-10 {
+    float: left;
+  }
+
+  .col-1  { width: 10%; }
+  .col-2  { width: 20%; }
+  .col-3  { width: 30%; }
+  .col-4  { width: 40%; }
+  .col-5  { width: 50%; }
+  .col-6  { width: 60%; }
+  .col-7  { width: 70%; }
+  .col-8  { width: 80%; }
+  .col-9  { width: 90%; }
+  .col-10 { width: 100%; }
+}
+
+/**
+ * Utilities
+ */
+
+/*
+ * Floats
+ */
+
+/* Clearfix
+   [http://nicolasgallagher.com/micro-clearfix-hack/] */
+.clearfix:before,
+.container:before,
+.row:before,
+.clearfix:after,
+.container:after,
+.row:after {
+  display: table;
+  content: " ";
+}
+
+.clearfix:after,
+.container:after,
+.row:after {
+  clear: both;
+}
+
+/* Float element to specific side */
+.pull-right { float: right !important; }
+.pull-left  { float: left !important; }
+
+/*
+ * Visibility
+ */
+
+/* Hide content from browsers and screen readers */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/* Hide element visually, but keep it in layout */
+.invisible {
+  visibility: hidden;
+}
+
+/* Screenreaders-only content
+   [http://a11yproject.com/posts/how-to-hide-content] */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/**
+ * Media queries
+ */
+
+/*
+ * Mobile-first
+ */
+
+@media (min-width: 992px) {
+  /* Style adjustments for viewports that meet the condition */
+}
+
+/*
+ * Print
+ */
+
+@media print {
+  /* Print styles */
+}

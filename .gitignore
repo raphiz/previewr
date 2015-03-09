@@ -3,3 +3,5 @@
 /.idea
 /dist
 /MANIFEST
+/target
+/.coverage

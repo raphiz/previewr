@@ -5,13 +5,11 @@ You need nothing else than python  a web browser installed. It works with every 
 
 And here is how you use it:
 
-    previewr hello-world.rst
+.. code:: bash
+
+    $ previewr hello-world.rst
 
 After running the command open `<http://localhost:8000/>`_ in the browser. You will now see a fancy preview of your document. If you make further changes to your document, the page will automatically refresh.
-
-Wanna see it in action? `Here is a quick video demonstrating how to use it <https://vimeo.com/92149294>`_.
-
-Note that this is a very young project. It works so far (at least on my machine :) ) and I'm open for your feedback or pull requests! Python is not my "native"/primary programming language, so please let me know if I could improve the codebase.
 
 
 Why another tool?
@@ -24,15 +22,24 @@ Initially, the given file is processed (with the Markdown_ or the reStructuredTe
 In the background, previewr observes the given file for changes. If the modification date changes, the contents are processed again and sent to the client (the web browser) using WebSockets.
 
 
+What's missing?
+---------------
+Previewr currently only supports a very basic subset of all possible style outputs.
+
+
 Installation
 ============
 Just run:
 
-    pip install previewr
+.. code:: bash
+
+    $ pip install previewr
 
 or using *easy_install*:
 
-    easy_install previewr
+.. code:: bash
+
+    $ easy_install previewr
 
 Note that previewr is written in python3, so you might have to run pip3 if pip points to pip2. Same applies to easy_install.
 
@@ -55,10 +62,18 @@ Arguments:
 
 Here an example:
 
-    previewr --port=8443 --format=markdown example.markdown
+.. code:: bash
+
+    $ previewr --port=8443 --format=markdown example.markdown
 
 Changelog
 =========
+0.3.0
+-----
+* Template improved (now using mistype.css)
+* Pygments support added
+* Migrated project to pybuilder
+
 0.1.0
 -----
 * Rewrite of most components
@@ -97,7 +112,8 @@ Previewr licensed under the MIT_ license.
 Attribution
 ===========
 * Favicon is by Sergio Sánchez López, found via `IconFinder <https://www.iconfinder.com/icons/7680/adept_magnifying_glass_preview_icon>`_.
-* CSS template is based on the `PURE CSS Framework <http://purecss.io/>`_.
+* CSS template is based on the `Mistype <http://zdroid.roon.io/mistype>`_.
+* Syntax highlighting powerd by `Pygments <http://pygments.org/>`_. 
 * Markdown_ processing is powered by the `python markdown library <https://pypi.python.org/pypi/markdown>`_.
 * reStructuredText_ processing is powered by the `python docutils library <https://pypi.python.org/pypi/docutils>`_.
 * JQuery_

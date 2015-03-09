@@ -1,5 +1,8 @@
 import logging
+from previewr import utils
 from abc import abstractmethod
+from docutils import core
+from docutils.parsers.rst import directives
 
 
 class Processor(object):
@@ -67,7 +70,8 @@ class RstProcessor(Processor):
     name = "rst"
 
     def process(self):
-        from docutils import core
+        directives.register_directive('code', utils.Pygments)
+        directives.register_directive('sourcecode', utils.Pygments)
         return core.publish_parts(self.get_contents(), writer_name="html")["html_body"]
 
     def is_applicable(self):

@@ -1,39 +1,23 @@
+import os
+import sys
 from distutils.core import setup
 
 README = open('README.rst').read()
 VERSION = '0.2.0'
 
+
+def read(file_name):
+    abs_file_name = os.path.join(os.path.dirname(__file__), file_name)
+    with open(abs_file_name) as file:
+        return file.read()
+
+
 setup(
-    name = "previewr",
-    packages = ["previewr"],
-    package_data = {
-       "previewr": [
-            "templates/*",
-            "static/*"],
-    },
     version = VERSION,
-    license = "MIT",
     include_package_data=True,
-    zip_safe=False,
-    install_requires= [ 'tornado','markdown', 'docutils'],
-    entry_points = {
-        'console_scripts': [
-            'previewr = previewr:main']
-    },
-    description = "Simple markdonw/reStructured Text previewer",
-    author = "Raphael Zimmermann",
-    author_email = "mister.norbert@gmail.com",
-    url = "https://github.com/raphiz/previewr",
+    tests_require = read('test_requirements.txt'),
+
     download_url = "https://github.com/raphiz/previewr/archive/" + VERSION + ".zip",
     keywords = ["preview", "markdown", "rst", "md", "restructuredText"],
-    classifiers = [
-        "Programming Language :: Python :: 3",
-        "Development Status :: 4 - Beta",
-        "Intended Audience :: Developers",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-        "Topic :: Software Development :: Libraries :: Python Modules",
-        "Topic :: Text Processing :: Linguistic",
-        ],
-    long_description=README
+    
 )
