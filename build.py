@@ -11,12 +11,12 @@ use_plugin("copy_resources")
 name = "previewr"
 default_task = "publish"
 
-summary = "Simple markdonw/reStructured Text previewer"
+summary = "Simple Markdown/reStructured Text previewer"
 authors = [Author("Raphael Zimmermann", "mister.norbert@gmail.com")]
 description = open('README.rst').read()
 license = "MIT"
 url = "http://raphael.li/projects/previewr/"
-version = "0.3.0"
+version = "0.4.0.dev"
 
 
 @init
