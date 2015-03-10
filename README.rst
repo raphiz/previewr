@@ -118,7 +118,7 @@ Attribution
 * Favicon is by Sergio Sánchez López, found via `IconFinder <https://www.iconfinder.com/icons/7680/adept_magnifying_glass_preview_icon>`_.
 * CSS template is based on the `Mistype <http://zdroid.roon.io/mistype>`_.
 * Syntax highlighting powerd by `Pygments <http://pygments.org/>`_. 
-* Markdown_ processing is powered by the `gfm <https://pypi.python.org/pypi/gfm/>`_.
+* Markdown_ processing is powered by `gfm <https://pypi.python.org/pypi/gfm/>`_.
 * reStructuredText_ processing is powered by the `python docutils library <https://pypi.python.org/pypi/docutils>`_.
 * JQuery_
 * Table of contents JavaScript powered by the `TOC jQuery plugin <http://projects.jga.me/toc/>`_.
