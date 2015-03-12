@@ -53,8 +53,14 @@ class MarkdownProcessor(Processor):
     name = "markdown"
 
     def process(self):
-        import gfm
-        return gfm.markdown(self.get_contents())
+        import markdown
+        return markdown.markdown(
+            self.get_contents(),
+            extensions=[
+                markdown.extensions.codehilite,
+                markdown.extensions.fenced_code
+            ]
+        )
 
     def is_applicable(self):
         if self.get_file_extension() in ["md", "markdown"]:
