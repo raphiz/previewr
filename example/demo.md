@@ -137,7 +137,17 @@ Or perhaps someone a little less eloquent:
 
 
 ```python
-print('yay')
+
+    class MainHandler(tornado.web.RequestHandler):
+        """
+        Main RequestHandler to send the index to the client.
+        """
+        def get(self):
+            self.render("index.html",
+                        contents=self.application.processor.process(),
+                        filename=self.application.file_to_preview)
+
+
 ```
 
 Table for two
