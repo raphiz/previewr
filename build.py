@@ -16,7 +16,7 @@ authors = [Author("Raphael Zimmermann", "mister.norbert@gmail.com")]
 description = open('README.rst').read()
 license = "MIT"
 url = "http://raphael.li/projects/previewr/"
-version = "0.4.0"
+version = "0.5.0.dev"
 
 
 @init
