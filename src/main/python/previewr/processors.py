@@ -57,8 +57,8 @@ class MarkdownProcessor(Processor):
         return markdown.markdown(
             self.get_contents(),
             extensions=[
-                markdown.extensions.codehilite,
-                markdown.extensions.fenced_code
+                'markdown.extensions.codehilite',
+                'markdown.extensions.fenced_code'
             ]
         )
 
